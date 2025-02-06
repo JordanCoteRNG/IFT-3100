@@ -49,6 +49,7 @@ void UserInterface::knight_color_setup(){
     converter = KnightColorConverterRGB();
 	std::string s = converter.get_name();
     currentColorRGB = KnightColorRGB(v1, v2, v3, 255);
+    currentColorRGB = converter.TransformTo(KnightColor(v1, v2, v3, v4, 255));
 }
 
 

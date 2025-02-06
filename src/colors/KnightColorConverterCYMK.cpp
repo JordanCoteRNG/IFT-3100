@@ -1,6 +1,7 @@
 #include "KnightColorConverterCYMK.h"
 
 KnightColorConverterCYMK::KnightColorConverterCYMK() {
+	name = "CYMK";
 }
 
 KnightColorRGB KnightColorConverter::TransformTo(KnightColor currentKnightColor) {
@@ -18,8 +19,4 @@ KnightColor KnightColorConverter::TransformFrom(KnightColorRGB currentKnightColo
 	float yellow = (1 - currentKnightColor.get_blue() / static_cast<float>(255) - black) / (1 - black);
 	KnightColor ac(cyan, magenta, yellow, black, currentKnightColor.get_alpha());
 	return ac;
-}
-
-std::string KnightColorConverter::get_name() {
-	return "CYMK";
 }

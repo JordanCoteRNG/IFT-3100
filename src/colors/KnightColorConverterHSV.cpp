@@ -9,6 +9,7 @@
 #include "KnightColorConverterHSV.h"
 
 KnightColorConverterHSV::KnightColorConverterHSV() {
+	name = "HSV";
 }
 
 KnightColorRGB KnightColorConverter::TransformTo(KnightColor currentKnightColor) {
@@ -89,8 +90,4 @@ KnightColor KnightColorConverter::TransformFrom(KnightColorRGB currentKnightColo
 	KnightColor ac(hueValue, minValue, value,0.0f, alpha);
 
 	return ac;
-}
-
-std::string KnightColorConverter::get_name() {
-	return "HSV";
 }

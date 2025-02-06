@@ -9,6 +9,7 @@
 
 #include "KnightColorConverterRGB.h"
 KnightColorConverterRGB::KnightColorConverterRGB() {
+	name = "RGB";
 }
 
 KnightColorRGB KnightColorConverter::TransformTo(KnightColor currentKnightColor) {
@@ -23,8 +24,4 @@ KnightColor KnightColorConverter::TransformFrom(KnightColorRGB currentKnightColo
 	int alpha = currentKnightColor.get_alpha();
 	KnightColor ac(red, green, blue,0.0f, currentKnightColor.get_alpha());
 	return ac;
-}
-
-std::string KnightColorConverter::get_name() {
-	return "RGB";
 }

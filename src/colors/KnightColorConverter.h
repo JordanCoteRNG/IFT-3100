@@ -11,6 +11,8 @@
 #pragma once
 class KnightColorConverter
 {
+protected:
+	std::string name;
 public:
 	KnightColorConverter();
 	KnightColorRGB TransformTo(KnightColor currentArmorColor);
