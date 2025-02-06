@@ -7,6 +7,10 @@
  *
  *****************************************************/
 #pragma once
+#include "colors/KnightColorConverterRGB.h"
+#include "colors/KnightColorConverterCYMK.h"
+#include "colors/KnightColorConverterHSV.h"
+
 #include <ofxImGui.h>
 
 
@@ -51,6 +55,16 @@ private:
     void on_generate_atlas();
     void on_history_undo();
     void on_history_redo();
+
+	// Knight color setup
+    float v1;
+	float v2;
+	float v3;
+	float v4;
+    int alpha;
+	KnightColorConverter converter;
+	KnightColorRGB currentColorRGB;
+    void knight_color_setup();
 
 
 };

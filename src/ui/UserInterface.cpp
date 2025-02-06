@@ -35,6 +35,20 @@ void UserInterface::setup() {
  imgToolbarGenerateAtlas.load("images/ui/toolbar_buttons/generate_atlas.png");
  m_textureToolbarGenerateAtlas = imgToolbarGenerateAtlas.getTexture();
 
+ knight_color_setup();
+}
+
+void UserInterface::knight_color_setup(){
+    v1 = rand() % 255 + 1;
+    v2 = rand() % 255 + 1;
+    v3 = rand() % 255 + 1;
+    v1 = 212;
+    v2 = 175;
+    v3 = 55;
+
+    converter = KnightColorConverterRGB();
+	std::string s = converter.get_name();
+    currentColorRGB = KnightColorRGB(v1, v2, v3, 255);
 }
 
 
@@ -103,6 +117,49 @@ void UserInterface::draw_menu() {
     on_about_program();
    }
    ImGui::EndMenu();
+  }
+
+  if (ImGui::BeginMenu("Knight Color")) {
+      if (ImGui::MenuItem("RGB")) {
+          currentColorRGB = converter.TransformTo(KnightColor(v1, v2, v3, v4, 255));
+          converter = KnightColorConverterRGB();
+          KnightColor ac = converter.TransformFrom(currentColorRGB);
+          v1 = ac.get_value1();
+          v2 = ac.get_value2();
+          v3 = ac.get_value3();
+          v4 = ac.get_value4();
+      }
+      if (ImGui::MenuItem("CYMK")) {
+		  std::string s = converter.get_name();
+          currentColorRGB = converter.TransformTo(KnightColor(v1, v2, v3, v4, 255));
+          converter = KnightColorConverterCYMK();
+          KnightColor ac = converter.TransformFrom(currentColorRGB);
+          v1 = ac.get_value1();
+          v2 = ac.get_value2();
+          v3 = ac.get_value3();
+          v4 = ac.get_value4();
+      }
+      if (ImGui::MenuItem("HSV")) {
+          currentColorRGB = converter.TransformTo(KnightColor(v1, v2, v3, v4, 255));
+          converter = KnightColorConverterHSV();
+          KnightColor ac = converter.TransformFrom(currentColorRGB);
+          v1 = ac.get_value1();
+          v2 = ac.get_value2();
+          v3 = ac.get_value3();
+          v4 = ac.get_value4();
+      }
+      if (ImGui::MenuItem("Generate random color")) {
+          v1 = rand() % 255 + 1;
+          v2 = rand() % 255 + 1;
+          v3 = rand() % 255 + 1;
+          currentColorRGB = KnightColorRGB(v1, v2, v3, 255);
+          KnightColor ac = converter.TransformFrom(currentColorRGB);
+          v1 = ac.get_value1();
+          v2 = ac.get_value2();
+          v3 = ac.get_value3();
+          v4 = ac.get_value4();
+      }
+      ImGui::EndMenu();
   }
 
   ImGui::EndMainMenuBar(); // End the menu bar
@@ -225,6 +282,22 @@ void UserInterface::draw_properties() {
  ImGui::Text("Active");
  ImGui::SameLine(100);
  ImGui::Checkbox("", &isActive);
+
+ ImGui::Text("value 1");
+ ImGui::SameLine(100);
+ ImGui::InputFloat("", &v1);
+
+ ImGui::Text("value 2");
+ ImGui::SameLine(100);
+ ImGui::InputFloat("", &v2);
+
+ ImGui::Text("value 3");
+ ImGui::SameLine(100);
+ ImGui::InputFloat("", &v3);
+
+ ImGui::Text("value 4");
+ ImGui::SameLine(100);
+ ImGui::InputFloat("", &v4);
 
  ImGui::End();  // End of the property list window
 
