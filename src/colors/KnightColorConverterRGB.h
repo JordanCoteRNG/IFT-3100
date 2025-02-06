@@ -8,9 +8,10 @@
  *****************************************************/
 #include "KnightColorConverter.h"
 #pragma once
-class KnightColorConverterRGB :
-	public KnightColorConverter
+class KnightColorConverterRGB : public KnightColorConverter
 {
 public:
 	KnightColorConverterRGB();
+	KnightColorRGB TransformTo(KnightColor currentKnightColor) override;
+	KnightColor TransformFrom(KnightColorRGB currentKnightColor) override;
 };

@@ -11,6 +11,7 @@ KnightColorConverter::KnightColorConverter()
 {
 }
 
+
 std::string KnightColorConverter::get_name()
 {
 	return name;

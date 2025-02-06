@@ -12,7 +12,7 @@ KnightColorConverterHSV::KnightColorConverterHSV() {
 	name = "HSV";
 }
 
-KnightColorRGB KnightColorConverter::TransformTo(KnightColor currentKnightColor) {
+KnightColorRGB KnightColorConverterHSV::TransformTo(KnightColor currentKnightColor) {
 	float hue = currentKnightColor.get_value1();
 	float saturation = currentKnightColor.get_value2() / 100.00f;
 	float value = currentKnightColor.get_value3() / 100.00f;
@@ -64,7 +64,7 @@ KnightColorRGB KnightColorConverter::TransformTo(KnightColor currentKnightColor)
 	return arc;
 }
 
-KnightColor KnightColorConverter::TransformFrom(KnightColorRGB currentKnightColor) {
+KnightColor KnightColorConverterHSV::TransformFrom(KnightColorRGB currentKnightColor) {
 	int red = currentKnightColor.get_red();
 	int green = currentKnightColor.get_green();
 	int blue = currentKnightColor.get_blue();

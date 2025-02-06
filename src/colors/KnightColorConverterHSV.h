@@ -10,11 +10,12 @@
 #include <math.h>
 #pragma once
 
-class KnightColorConverterHSV :
-	public KnightColorConverter
+class KnightColorConverterHSV : public KnightColorConverter
 {
 public:
 	KnightColorConverterHSV();
+	KnightColorRGB TransformTo(KnightColor currentKnightColor) override;
+	KnightColor TransformFrom(KnightColorRGB currentKnightColor) override;
 };
 
 

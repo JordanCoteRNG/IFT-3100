@@ -62,7 +62,7 @@ private:
 	float v3;
 	float v4;
     int alpha;
-	KnightColorConverter converter;
+	KnightColorConverter* converter = new KnightColorConverterRGB();
 	KnightColorRGB currentColorRGB;
     void knight_color_setup();
 

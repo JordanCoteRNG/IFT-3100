@@ -12,12 +12,12 @@ KnightColorConverterRGB::KnightColorConverterRGB() {
 	name = "RGB";
 }
 
-KnightColorRGB KnightColorConverter::TransformTo(KnightColor currentKnightColor) {
+KnightColorRGB KnightColorConverterRGB::TransformTo(KnightColor currentKnightColor) {
 	KnightColorRGB arc(currentKnightColor.get_value1(), currentKnightColor.get_value2(), currentKnightColor.get_value3(), currentKnightColor.get_alpha());
 	return arc;
 }
 
-KnightColor KnightColorConverter::TransformFrom(KnightColorRGB currentKnightColor) {
+KnightColor KnightColorConverterRGB::TransformFrom(KnightColorRGB currentKnightColor) {
 	float red = currentKnightColor.get_red();
 	float green = currentKnightColor.get_green();
 	float blue = currentKnightColor.get_blue();

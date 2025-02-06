@@ -15,8 +15,8 @@ protected:
 	std::string name;
 public:
 	KnightColorConverter();
-	KnightColorRGB TransformTo(KnightColor currentArmorColor);
-	KnightColor TransformFrom(KnightColorRGB currentArmorColor);
+	virtual KnightColorRGB TransformTo(KnightColor currentKnightColor) = 0;
+	virtual KnightColor TransformFrom(KnightColorRGB currentKnightColor) = 0;
 
 	std::string get_name();
 };

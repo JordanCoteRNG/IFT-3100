@@ -46,10 +46,10 @@ void UserInterface::knight_color_setup(){
     v2 = 175;
     v3 = 55;
 
-    converter = KnightColorConverterRGB();
-	std::string s = converter.get_name();
+    converter = new KnightColorConverterRGB();
+	std::string s = converter->get_name();
     currentColorRGB = KnightColorRGB(v1, v2, v3, 255);
-    currentColorRGB = converter.TransformTo(KnightColor(v1, v2, v3, v4, 255));
+    currentColorRGB = converter->TransformTo(KnightColor(v1, v2, v3, v4, 255));
 }
 
 
@@ -122,28 +122,28 @@ void UserInterface::draw_menu() {
 
   if (ImGui::BeginMenu("Knight Color")) {
       if (ImGui::MenuItem("RGB")) {
-          currentColorRGB = converter.TransformTo(KnightColor(v1, v2, v3, v4, 255));
-          converter = KnightColorConverterRGB();
-          KnightColor ac = converter.TransformFrom(currentColorRGB);
+          currentColorRGB = converter->TransformTo(KnightColor(v1, v2, v3, v4, 255));
+          converter = new KnightColorConverterRGB();
+          KnightColor ac = converter->TransformFrom(currentColorRGB);
           v1 = ac.get_value1();
           v2 = ac.get_value2();
           v3 = ac.get_value3();
           v4 = ac.get_value4();
       }
       if (ImGui::MenuItem("CYMK")) {
-		  std::string s = converter.get_name();
-          currentColorRGB = converter.TransformTo(KnightColor(v1, v2, v3, v4, 255));
-          converter = KnightColorConverterCYMK();
-          KnightColor ac = converter.TransformFrom(currentColorRGB);
+		  std::string s = converter->get_name();
+          currentColorRGB = converter->TransformTo(KnightColor(v1, v2, v3, v4, 255));
+          converter = new KnightColorConverterCYMK();
+          KnightColor ac = converter->TransformFrom(currentColorRGB);
           v1 = ac.get_value1();
           v2 = ac.get_value2();
           v3 = ac.get_value3();
           v4 = ac.get_value4();
       }
       if (ImGui::MenuItem("HSV")) {
-          currentColorRGB = converter.TransformTo(KnightColor(v1, v2, v3, v4, 255));
-          converter = KnightColorConverterHSV();
-          KnightColor ac = converter.TransformFrom(currentColorRGB);
+          currentColorRGB = converter->TransformTo(KnightColor(v1, v2, v3, v4, 255));
+          converter = new KnightColorConverterHSV();
+          KnightColor ac = converter->TransformFrom(currentColorRGB);
           v1 = ac.get_value1();
           v2 = ac.get_value2();
           v3 = ac.get_value3();
@@ -154,7 +154,7 @@ void UserInterface::draw_menu() {
           v2 = rand() % 255 + 1;
           v3 = rand() % 255 + 1;
           currentColorRGB = KnightColorRGB(v1, v2, v3, 255);
-          KnightColor ac = converter.TransformFrom(currentColorRGB);
+          KnightColor ac = converter->TransformFrom(currentColorRGB);
           v1 = ac.get_value1();
           v2 = ac.get_value2();
           v3 = ac.get_value3();
